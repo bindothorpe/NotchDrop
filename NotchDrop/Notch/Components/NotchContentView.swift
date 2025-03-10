@@ -20,12 +20,21 @@ struct NotchContentView: View {
             case .normal:
                 NotchNormalView(vm: vm)
                 .transition(.scale(scale: 0.8).combined(with: .opacity))
+                .onAppear {
+                    vm.sizeManager.updateNotchSize(for: .normal)
+                }
             case .menu:
                 NotchMenuView(vm: vm)
                     .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    .onAppear {
+                        vm.sizeManager.updateNotchSize(for: .menu)
+                    }
             case .settings:
                 NotchSettingsView(vm: vm)
                     .transition(.scale(scale: 0.8).combined(with: .opacity))
+                    .onAppear {
+                        vm.sizeManager.updateNotchSize(for: .settings)
+                    }
             }
         }
         .animation(vm.animation, value: vm.contentType)

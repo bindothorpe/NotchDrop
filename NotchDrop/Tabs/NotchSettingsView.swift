@@ -93,6 +93,10 @@ struct NotchSettingsView: View {
         }
         .padding()
         .transition(.scale(scale: 0.8).combined(with: .opacity))
+        .onAppear {
+            vm.sizeManager.registerTab(type: .settings, rowCount: 3, colCount: 1)
+            vm.sizeManager.updateNotchSize(for: .settings)
+        }
     }
 }
 

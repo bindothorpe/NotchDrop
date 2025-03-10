@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TrayView: View {
+struct TrayView: View, NotchSizeProvider {
     @StateObject var vm: NotchViewModel
     @StateObject var tvm = TrayDrop.shared
 
@@ -38,6 +38,9 @@ struct TrayView: View {
             .onDrop(of: [.data], isTargeted: $targeting) { providers in
                 DispatchQueue.global().async { tvm.load(providers) }
                 return true
+            }
+            .onAppear {
+                vm.sizeManager.registerWidget(self, for: .normal)
             }
     }
 
@@ -100,6 +103,15 @@ struct TrayView: View {
             }
         }
     }
+    
+    // NotchSizeProvider implementation
+    func getColSpan() -> CGFloat {
+        // Since TrayView can contain multiple items with a scroll view,
+        // we're giving it more horizontal space
+        return 3.0
+    }
+    
+    func getRowSpan() -> CGFloat { 1.0 }
 }
 
 #Preview {

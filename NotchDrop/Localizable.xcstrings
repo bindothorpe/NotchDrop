@@ -1587,6 +1587,16 @@
         }
       }
     },
+    "Placeholder %.0fx%.0f" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Placeholder %1$.0fx%2$.0f"
+          }
+        }
+      }
+    },
     "Press Option to delete" : {
       "localizations" : {
         "de" : {

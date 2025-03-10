@@ -20,6 +20,10 @@ struct NotchMenuView: View {
             donate
             settings
         }
+        .onAppear {
+            vm.sizeManager.registerTab(type: .menu, rowCount: 1, colCount: 5)
+            vm.sizeManager.updateNotchSize(for: .menu)
+        }
     }
 
     var github: some View {
@@ -89,7 +93,7 @@ struct NotchMenuView: View {
     }
 }
 
-private struct ColorButton: View {
+private struct ColorButton: View, NotchSizeProvider {
     let color: [Color]
     let image: Image
     let title: LocalizedStringKey
@@ -125,6 +129,10 @@ private struct ColorButton: View {
             .aspectRatio(1, contentMode: .fit)
             .contentShape(Rectangle())
     }
+    
+    // NotchSizeProvider implementation
+    func getColSpan() -> CGFloat { 1.0 }
+    func getRowSpan() -> CGFloat { 1.0 }
 }
 
 #Preview {
