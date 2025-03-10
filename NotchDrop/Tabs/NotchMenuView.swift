@@ -14,11 +14,11 @@ struct NotchMenuView: View {
 
     var body: some View {
         HStack(spacing: vm.spacing) {
+            clear
             close
             github
             donate
             settings
-            clear
         }
     }
 
