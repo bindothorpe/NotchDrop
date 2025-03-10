@@ -10,6 +10,8 @@ import Pow
 import SwiftUI
 import UniformTypeIdentifiers
 
+
+// Widget
 struct AirDropView: View {
     @StateObject var vm: NotchViewModel
 

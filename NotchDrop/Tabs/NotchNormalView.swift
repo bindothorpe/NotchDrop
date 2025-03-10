@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct NotchHomeView: View {
+
+//Tab
+struct NotchNormalView: View {
     @StateObject var vm: NotchViewModel
     
     var body: some View {

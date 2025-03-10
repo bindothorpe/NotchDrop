@@ -42,6 +42,9 @@
         }
       }
     },
+    "%lldpx" : {
+
+    },
     "1 Day" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1500,6 +1503,9 @@
           }
         }
       }
+    },
+    "Notch Width: " : {
+
     },
     "OK" : {
       "localizations" : {
