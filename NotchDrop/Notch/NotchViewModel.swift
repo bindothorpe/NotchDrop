@@ -1,3 +1,10 @@
+//
+//  NotchViewModel.swift
+//  NotchDrop
+//
+//  Created by 秋星桥 on 2024/7/7.
+//
+
 import Cocoa
 import Combine
 import Foundation
@@ -9,11 +16,15 @@ import SwiftUI
 class NotchViewModel: NSObject, ObservableObject {
     var cancellables: Set<AnyCancellable> = []
     let inset: CGFloat
+    
+    // Size manager
+    private(set) lazy var sizeManager = NotchSizeManager(viewModel: self)
 
     init(inset: CGFloat = -4) {
         self.inset = inset
         super.init()
         setupCancellables()
+        setupSizeConfigurations() // Add this line to initialize the size manager
     }
 
     deinit {
@@ -21,8 +32,8 @@ class NotchViewModel: NSObject, ObservableObject {
     }
 
     let animation: Animation = .interactiveSpring(
-        duration: 0.5,
-        extraBounce: 0.25,
+        duration: 0.3,
+        extraBounce: 0.15,
         blendDuration: 0.125
     )
     @Published var notchOpenedSize: CGSize = .init(width: 800, height: 160)
@@ -67,11 +78,26 @@ class NotchViewModel: NSObject, ObservableObject {
 
     @Published private(set) var status: Status = .closed
     @Published var openReason: OpenReason = .unknown
-    @Published var contentType: ContentType = .normal
+    @Published var contentType: ContentType = .normal {
+        didSet {
+            // Update notch size when content type changes
+            if oldValue != contentType && status == .opened {
+                sizeManager.updateNotchSize(for: contentType)
+            }
+        }
+    }
 
     @Published var spacing: CGFloat = 16
+    @Published var cellSize: CGFloat = 108
     @Published var cornerRadius: CGFloat = 16
-    @Published var deviceNotchRect: CGRect = .zero
+    @Published var deviceNotchRect: CGRect = .zero {
+        didSet {
+            // Update size when device notch rect changes
+            if status == .opened {
+                sizeManager.updateNotchSize(for: contentType)
+            }
+        }
+    }
     @Published var screenRect: CGRect = .zero
     @Published var optionKeyPressed: Bool = false
     @Published var notchVisible: Bool = true
@@ -88,6 +114,8 @@ class NotchViewModel: NSObject, ObservableObject {
         openReason = reason
         status = .opened
         contentType = .normal
+        // Update notch size when opening
+        sizeManager.updateNotchSize(for: contentType)
         NSApp.activate(ignoringOtherApps: true)
     }
 
@@ -104,5 +132,27 @@ class NotchViewModel: NSObject, ObservableObject {
     func notchPop() {
         openReason = .unknown
         status = .popping
+    }
+    
+    // Method to update notch size (called by the size manager)
+    func updateNotchSize(_ newSize: CGSize) {
+        // Ensure minimum width and height
+        let minWidth = max(deviceNotchRect.width * 2, 400)
+        let minHeight = max(deviceNotchRect.height * 2, 120)
+        
+        // Apply size limits
+        var finalSize = newSize
+        finalSize.width = max(minWidth, finalSize.width)
+        finalSize.height = max(minHeight, finalSize.height)
+        
+        // Don't exceed screen size minus some margin
+        if let screen = NSScreen.main {
+            let screenFrame = screen.visibleFrame
+            finalSize.width = min(screenFrame.width * 0.9, finalSize.width)
+            finalSize.height = min(screenFrame.height * 0.8, finalSize.height)
+        }
+        
+        // Update the size
+        notchOpenedSize = finalSize
     }
 }

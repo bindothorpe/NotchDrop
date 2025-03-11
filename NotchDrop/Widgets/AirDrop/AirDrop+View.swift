@@ -12,7 +12,7 @@ import UniformTypeIdentifiers
 
 
 // Widget
-struct AirDropView: View {
+struct AirDropView: View, NotchSizeProvider {
     @StateObject var vm: NotchViewModel
 
     @State var trigger: UUID = .init()
@@ -27,6 +27,9 @@ struct AirDropView: View {
                 }
                 DispatchQueue.global().async { beginDrop(providers) }
                 return true
+            }
+            .onAppear {
+                vm.sizeManager.registerWidget(self, for: .normal)
             }
     }
 
@@ -93,4 +96,8 @@ struct AirDropView: View {
             drop.begin()
         }
     }
+    
+    // NotchSizeProvider implementation
+    func getColSpan() -> CGFloat { 1.0 }
+    func getRowSpan() -> CGFloat { 1.0 }
 }

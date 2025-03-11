@@ -63,6 +63,7 @@
 		22CD22202D7F9BF200B7FAAC /* Widgets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Widgets; sourceTree = "<group>"; };
 		22CD22212D7F9C0E00B7FAAC /* Notch */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notch; sourceTree = "<group>"; };
 		22CD22232D7F9CE100B7FAAC /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
+		22CD222F2D7FA81400B7FAAC /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +105,7 @@
 		504381822C3A86EA000ED325 /* NotchDrop */ = {
 			isa = PBXGroup;
 			children = (
+				22CD222F2D7FA81400B7FAAC /* Managers */,
 				22CD22232D7F9CE100B7FAAC /* Tabs */,
 				22CD22212D7F9C0E00B7FAAC /* Notch */,
 				22CD22202D7F9BF200B7FAAC /* Widgets */,
@@ -157,6 +159,7 @@
 				22CD22202D7F9BF200B7FAAC /* Widgets */,
 				22CD22212D7F9C0E00B7FAAC /* Notch */,
 				22CD22232D7F9CE100B7FAAC /* Tabs */,
+				22CD222F2D7FA81400B7FAAC /* Managers */,
 			);
 			name = NotchDrop;
 			packageProductDependencies = (
