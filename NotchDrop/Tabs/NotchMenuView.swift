@@ -14,11 +14,21 @@ struct NotchMenuView: View {
 
     var body: some View {
         HStack(spacing: vm.spacing) {
-            clear
-            close
-            github
-            donate
-            settings
+            WidgetWrapper(vm: vm) {
+                github
+            }
+            WidgetWrapper(vm: vm) {
+                donate
+            }
+            WidgetWrapper(vm: vm) {
+                settings
+            }
+            WidgetWrapper(vm: vm) {
+                clear
+            }
+            WidgetWrapper(vm: vm) {
+                close
+            }
         }
         .onAppear {
             vm.sizeManager.registerTab(type: .menu, rowCount: 1, colCount: 5)

@@ -11,13 +11,15 @@ import SwiftUI
 struct PlaceholderView: View, NotchSizeProvider {
     @StateObject var vm: NotchViewModel
     
+    let label: String
     let colSpan: CGFloat
     let rowSpan: CGFloat
+    let backgroundColor: Color
     
     var body: some View {
-        Text("Placeholder \(colSpan, specifier: "%.0f")x\(rowSpan, specifier: "%.0f")")
+        Text("\(label) \(colSpan, specifier: "%.0f")x\(rowSpan, specifier: "%.0f")")
             .frame(width: vm.cellSize * colSpan + (max(0, (colSpan - 1) * vm.spacing)), height: vm.cellSize * rowSpan + (max(0, (rowSpan - 1) * vm.spacing)))
-            .background(Color.red)
+            .background(backgroundColor)
             .clipShape(RoundedRectangle(cornerRadius: vm.cornerRadius))
             .onAppear {
                 // Register this widget with the size manager
@@ -32,13 +34,5 @@ struct PlaceholderView: View, NotchSizeProvider {
     
     func getRowSpan() -> CGFloat {
         return rowSpan
-    }
-}
-
-#Preview {
-    VStack(alignment: .leading, spacing: 12) {
-        PlaceholderView(vm: .init(), colSpan: 1, rowSpan: 1)
-        PlaceholderView(vm: .init(), colSpan: 2, rowSpan: 1)
-        PlaceholderView(vm: .init(), colSpan: 2, rowSpan: 2)
     }
 }

@@ -32,8 +32,8 @@ class NotchViewModel: NSObject, ObservableObject {
     }
 
     let animation: Animation = .interactiveSpring(
-        duration: 0.5,
-        extraBounce: 0.25,
+        duration: 0.3,
+        extraBounce: 0.15,
         blendDuration: 0.125
     )
     @Published var notchOpenedSize: CGSize = .init(width: 800, height: 160)

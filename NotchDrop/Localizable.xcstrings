@@ -42,6 +42,16 @@
         }
       }
     },
+    "%@ %.0fx%.0f" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$.0fx%3$.0f"
+          }
+        }
+      }
+    },
     "%lldpx" : {
 
     },
@@ -1583,16 +1593,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "一個或多個檔案無法載入"
-          }
-        }
-      }
-    },
-    "Placeholder %.0fx%.0f" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Placeholder %1$.0fx%2$.0f"
           }
         }
       }
