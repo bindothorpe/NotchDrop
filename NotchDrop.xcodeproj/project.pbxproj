@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22CD226C2D80D25A00B7FAAC /* KeyboardShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CD226B2D80D25300B7FAAC /* KeyboardShortcuts.swift */; };
 		2700D8EE2C3CFD37005ACDDF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2700D8ED2C3CFD37005ACDDF /* Localizable.xcstrings */; };
 		501F0E8C2C59E6BD00F0113C /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F0E8B2C59E6BD00F0113C /* Language.swift */; };
 		502E41D62C3CEC990060660E /* Ext+NSAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502E41D52C3CEC990060660E /* Ext+NSAlert.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22CD226B2D80D25300B7FAAC /* KeyboardShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcuts.swift; sourceTree = "<group>"; };
 		2700D8ED2C3CFD37005ACDDF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		501F0E8B2C59E6BD00F0113C /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		502E41D52C3CEC990060660E /* Ext+NSAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+NSAlert.swift"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 		22CD22212D7F9C0E00B7FAAC /* Notch */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Notch; sourceTree = "<group>"; };
 		22CD22232D7F9CE100B7FAAC /* Tabs */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Tabs; sourceTree = "<group>"; };
 		22CD222F2D7FA81400B7FAAC /* Managers */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Managers; sourceTree = "<group>"; };
+		22CD22642D80C8E600B7FAAC /* Settings */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Settings; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 		504381822C3A86EA000ED325 /* NotchDrop */ = {
 			isa = PBXGroup;
 			children = (
+				22CD226B2D80D25300B7FAAC /* KeyboardShortcuts.swift */,
+				22CD22642D80C8E600B7FAAC /* Settings */,
 				22CD222F2D7FA81400B7FAAC /* Managers */,
 				22CD22232D7F9CE100B7FAAC /* Tabs */,
 				22CD22212D7F9C0E00B7FAAC /* Notch */,
@@ -160,6 +165,7 @@
 				22CD22212D7F9C0E00B7FAAC /* Notch */,
 				22CD22232D7F9CE100B7FAAC /* Tabs */,
 				22CD222F2D7FA81400B7FAAC /* Managers */,
+				22CD22642D80C8E600B7FAAC /* Settings */,
 			);
 			name = NotchDrop;
 			packageProductDependencies = (
@@ -241,6 +247,7 @@
 				50EFDB522C3BF7B4002D3E0F /* Ext+NSImage.swift in Sources */,
 				5044EE9E2C3B0F3D00071C5C /* Ext+FileProvider.swift in Sources */,
 				504381A42C3A8C7E000ED325 /* NotchWindowController.swift in Sources */,
+				22CD226C2D80D25A00B7FAAC /* KeyboardShortcuts.swift in Sources */,
 				504381A22C3A8BE0000ED325 /* Ext+NSScreen.swift in Sources */,
 				5044EEA42C3B140F00071C5C /* Ext+URL.swift in Sources */,
 				50CB767E2C3BC8880070D5E6 /* NotchViewModel+Events.swift in Sources */,

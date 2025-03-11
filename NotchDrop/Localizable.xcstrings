@@ -42,6 +42,9 @@
         }
       }
     },
+    "%.1fs" : {
+
+    },
     "%@ %.0fx%.0f" : {
       "localizations" : {
         "en" : {
@@ -53,6 +56,12 @@
       }
     },
     "%lldpx" : {
+
+    },
+    "%llds" : {
+
+    },
+    "© 2024 NotchDrop Developer" : {
 
     },
     "1 Day" : {
@@ -380,6 +389,12 @@
         }
       }
     },
+    "About" : {
+
+    },
+    "Accent Color" : {
+
+    },
     "AirDrop" : {
       "localizations" : {
         "de" : {
@@ -500,6 +515,18 @@
         }
       }
     },
+    "Appearance" : {
+
+    },
+    "Automatically close after inactivity" : {
+
+    },
+    "Automatically open on hover" : {
+
+    },
+    "Behavior" : {
+
+    },
     "Clear" : {
       "localizations" : {
         "de" : {
@@ -539,6 +566,9 @@
           }
         }
       }
+    },
+    "Close after:" : {
+
     },
     "Custom" : {
       "extractionState" : "manual",
@@ -580,6 +610,9 @@
           }
         }
       }
+    },
+    "Dark" : {
+
     },
     "Days" : {
       "localizations" : {
@@ -1026,6 +1059,9 @@
         }
       }
     },
+    "General" : {
+
+    },
     "German" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1187,6 +1223,12 @@
           }
         }
       }
+    },
+    "Hover delay:" : {
+
+    },
+    "Icon Size:" : {
+
     },
     "Japanese" : {
       "extractionState" : "manual",
@@ -1350,6 +1392,9 @@
           }
         }
       }
+    },
+    "Light" : {
+
     },
     "Love Drop" : {
       "extractionState" : "manual",
@@ -1517,6 +1562,9 @@
     "Notch Width: " : {
 
     },
+    "NotchDrop" : {
+
+    },
     "OK" : {
       "localizations" : {
         "de" : {
@@ -1637,6 +1685,9 @@
         }
       }
     },
+    "Restart Application" : {
+
+    },
     "Settings" : {
       "localizations" : {
         "de" : {
@@ -1676,6 +1727,9 @@
           }
         }
       }
+    },
+    "Show in menu bar" : {
+
     },
     "Simplified Chinese" : {
       "extractionState" : "manual",
@@ -1718,6 +1772,9 @@
         }
       }
     },
+    "System" : {
+
+    },
     "The language has been changed. The app will restart for the changes to take effect." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1758,6 +1815,9 @@
           }
         }
       }
+    },
+    "Theme" : {
+
     },
     "three days" : {
       "localizations" : {
@@ -1920,6 +1980,9 @@
         }
       }
     },
+    "Version %@" : {
+
+    },
     "Version: %@ (Build: %@)" : {
       "localizations" : {
         "de" : {
@@ -1959,6 +2022,9 @@
           }
         }
       }
+    },
+    "Visit Website" : {
+
     },
     "Weeks" : {
       "extractionState" : "manual",

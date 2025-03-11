@@ -8,11 +8,14 @@
 import AppKit
 import Cocoa
 import LaunchAtLogin
+import SwiftUI
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     var isFirstOpen = true
     var isLaunchedAtLogin = false
     var mainWindowController: NotchWindowController?
+    var settingsWindowController: NSWindowController?
+    var statusItem: NSStatusItem?
 
     var timer: Timer?
 
@@ -36,8 +39,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self?.makeKeyAndVisibleIfNeeded()
         }
         self.timer = timer
+        
+        // Initialize shortcuts
+        _ = ShortcutManager.shared
+        
+        // Setup menu bar icon and menu
+        setupMenuBar()
 
         rebuildApplicationWindows()
+    }
+    
+    func setupMenuBar() {
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        if let button = statusItem?.button {
+            button.image = NSImage(systemSymbolName: "rectangle.inset.toptrailing.filled", accessibilityDescription: "NotchDrop")
+        }
+        
+        let menu = NSMenu()
+        // Add settings menu item with the shortcut displayed
+        let settingsItem = NSMenuItem(title: "Settings", action: #selector(openSettings), keyEquivalent: ",")
+        menu.addItem(settingsItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        
+        statusItem?.menu = menu
+    }
+    
+    @objc func openSettings() {
+        if settingsWindowController == nil {
+            // Create the window
+            let window = NSWindow(
+                contentRect: NSRect(x: 0, y: 0, width: 500, height: 400),
+                styleMask: [.titled, .closable, .miniaturizable, .resizable],
+                backing: .buffered,
+                defer: false
+            )
+            window.center()
+            window.title = "NotchDrop Settings"
+            
+            // Create a SwiftUI hosting controller with your settings view
+            let settingsView = SettingsView()
+            let hostingController = NSHostingController(rootView: settingsView)
+            window.contentViewController = hostingController
+            
+            // Create a window controller to manage the window
+            settingsWindowController = NSWindowController(window: window)
+        }
+        
+        // Show the window and bring it to front
+        settingsWindowController?.showWindow(nil)
+        
+        // Ensure the app is active so the window appears in front
+        NSApp.activate(ignoringOtherApps: true)
     }
 
     func applicationWillTerminate(_: Notification) {
