@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "& Press Option to delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -53,6 +56,9 @@
       }
     },
     "%lldpx" : {
+
+    },
+    "© 2024 NotchDrop Developer" : {
 
     },
     "1 Day" : {
@@ -499,6 +505,12 @@
           }
         }
       }
+    },
+    "Appearance Settings" : {
+
+    },
+    "Behavior Settings" : {
+
     },
     "Clear" : {
       "localizations" : {
@@ -1026,6 +1038,9 @@
         }
       }
     },
+    "General Settings" : {
+
+    },
     "German" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1392,6 +1407,9 @@
         }
       }
     },
+    "Menu Bar" : {
+
+    },
     "Months" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1474,6 +1492,9 @@
         }
       }
     },
+    "Notch" : {
+
+    },
     "Notch Drop" : {
       "localizations" : {
         "de" : {
@@ -1515,6 +1536,9 @@
       }
     },
     "Notch Width: " : {
+
+    },
+    "NotchDrop" : {
 
     },
     "OK" : {
@@ -1597,6 +1621,9 @@
         }
       }
     },
+    "Open on hover" : {
+
+    },
     "Press Option to delete" : {
       "localizations" : {
         "de" : {
@@ -1676,6 +1703,9 @@
           }
         }
       }
+    },
+    "Show in menu bar" : {
+
     },
     "Simplified Chinese" : {
       "extractionState" : "manual",
@@ -1880,6 +1910,9 @@
         }
       }
     },
+    "Translucent notch background" : {
+
+    },
     "two days" : {
       "localizations" : {
         "de" : {
@@ -1920,6 +1953,9 @@
         }
       }
     },
+    "Version %@" : {
+
+    },
     "Version: %@ (Build: %@)" : {
       "localizations" : {
         "de" : {
@@ -1959,6 +1995,9 @@
           }
         }
       }
+    },
+    "Visit Website" : {
+
     },
     "Weeks" : {
       "extractionState" : "manual",

@@ -128,6 +128,12 @@ class NotchViewModel: NSObject, ObservableObject {
     func showSettings() {
         contentType = .settings
     }
+    
+    func openSettingsWindow() {
+        if let appDelegate = NSApp.delegate as? AppDelegate {
+            appDelegate.openSettings()
+        }
+    }
 
     func notchPop() {
         openReason = .unknown

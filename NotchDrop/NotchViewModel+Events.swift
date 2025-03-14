@@ -30,11 +30,11 @@ extension NotchViewModel {
                     } else if headlineOpenedRect.contains(mouseLocation) {
                         // for clicking headline which mouse event may handled by another app
                         // open the menu
-                        if let nextValue = ContentType(rawValue: contentType.rawValue + 1) {
-                            contentType = nextValue
-                        } else {
-                            contentType = ContentType(rawValue: 0)!
-                        }
+//                        if let nextValue = ContentType(rawValue: contentType.rawValue + 1) {
+//                            contentType = nextValue
+//                        } else {
+//                            contentType = ContentType(rawValue: 0)!
+//                        }
                     }
                 case .closed, .popping:
                     // touch inside, open
