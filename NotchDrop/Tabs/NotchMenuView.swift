@@ -97,7 +97,7 @@ struct NotchMenuView: View {
             title: LocalizedStringKey("Settings")
         )
         .onTapGesture {
-            vm.showSettings()
+            vm.openSettingsWindow()
         }
         .clipShape(RoundedRectangle(cornerRadius: vm.cornerRadius))
     }

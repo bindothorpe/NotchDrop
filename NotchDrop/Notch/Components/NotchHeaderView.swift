@@ -20,7 +20,9 @@ struct NotchHeaderView: View {
             )
             .contentTransition(.numericText())
             Spacer()
-            Image(systemName: "ellipsis")
+            Image(systemName: "gear").onTapGesture {
+                vm.openSettingsWindow()
+            }
         }
         .animation(vm.animation, value: vm.contentType)
         .font(.system(.headline, design: .rounded))
