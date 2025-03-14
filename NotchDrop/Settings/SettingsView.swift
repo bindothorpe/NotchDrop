@@ -6,159 +6,75 @@
 //
 
 import SwiftUI
-import LaunchAtLogin
+import SwiftUI
+
+import SwiftUI
+
+enum SidebarItem: String, Identifiable, CaseIterable {
+    var id: String { rawValue }
+    
+    case general
+    case appearance
+    case behavior
+    case about
+    
+    // Add a property to get the appropriate system image name for each item
+    var iconName: String {
+        switch self {
+        case .general:
+            return "gear"
+        case .appearance:
+            return "paintbrush"
+        case .behavior:
+            return "hand.tap"
+        case .about:
+            return "info.circle"
+        }
+    }
+}
 
 struct SettingsView: View {
-    @State private var selectedTab = 0
-    @AppStorage("showInMenuBar") private var showInMenuBar = true
-    @AppStorage("autoOpenOnHover") private var autoOpenOnHover = true
-    @AppStorage("hoverDelay") private var hoverDelay = 0.5
-    @AppStorage("autoCloseAfterInactivity") private var autoCloseAfterInactivity = true
-    @AppStorage("autoCloseTimeout") private var autoCloseTimeout = 5.0
-    @State private var accentColor = Color.blue
-    @AppStorage("iconSize") private var iconSize = 24.0
-    @AppStorage("themePreference") private var themePreference = 0
+    private let sidebarVisibility: NavigationSplitViewVisibility = .all
+    @State var selectedSidebarItem: SidebarItem = .general
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            // General Tab
-            Form {
-                Section {
-                    LaunchAtLogin.Toggle("Launch at login")
-                    Toggle("Show in menu bar", isOn: $showInMenuBar)
-                }
-                
-                Button("Restart Application") {
-                    restartApplication()
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .padding(.top)
-            }
-            .tabItem {
-                Label("General", systemImage: "gear")
-            }
-            .tag(0)
-            
-            // Appearance Tab
-            Form {
-                Section {
-                    Picker("Theme", selection: $themePreference) {
-                        Text("System").tag(0)
-                        Text("Light").tag(1)
-                        Text("Dark").tag(2)
-                    }
-                    .pickerStyle(.menu)
-                    
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Icon Size:")
-                            Spacer()
-                            Text("\(Int(iconSize))px")
-                                .foregroundColor(.secondary)
+        NavigationSplitView(columnVisibility: .constant(.all)) {
+            VStack(spacing: 0) {
+                List(selection: $selectedSidebarItem) {
+                    ForEach(SidebarItem.allCases.filter { $0 != .about }, id: \.self) { item in
+                        NavigationLink(value: item) {
+                            Label(item.rawValue.localizedCapitalized, systemImage: item.iconName)
                         }
-                        Slider(value: $iconSize, in: 16...48, step: 1)
-                    }
-                    
-                    ColorPicker("Accent Color", selection: $accentColor)
-                }
-            }
-            .tabItem {
-                Label("Appearance", systemImage: "paintbrush")
-            }
-            .tag(1)
-            
-            // Behavior Tab
-            Form {
-                Section {
-                    Toggle("Automatically open on hover", isOn: $autoOpenOnHover)
-                    
-                    if autoOpenOnHover {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Hover delay:")
-                                Spacer()
-                                Text("\(hoverDelay, specifier: "%.1f")s")
-                                    .foregroundColor(.secondary)
-                            }
-                            Slider(value: $hoverDelay, in: 0...2, step: 0.1)
-                        }
-                        .padding(.leading)
-                    }
-                    
-                    Toggle("Automatically close after inactivity", isOn: $autoCloseAfterInactivity)
-                    
-                    if autoCloseAfterInactivity {
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Close after:")
-                                Spacer()
-                                Text("\(Int(autoCloseTimeout))s")
-                                    .foregroundColor(.secondary)
-                            }
-                            Slider(value: $autoCloseTimeout, in: 1...30, step: 1)
-                        }
-                        .padding(.leading)
                     }
                 }
-            }
-            .tabItem {
-                Label("Behavior", systemImage: "hand.tap")
-            }
-            .tag(2)
-            
-            // About Tab
-            VStack(spacing: 20) {
-                Image(nsImage: NSApp.applicationIconImage ?? NSImage())
-                    .resizable()
-                    .frame(width: 128, height: 128)
+                .listStyle(SidebarListStyle())
                 
-                Text("NotchDrop")
-                    .font(.title)
-                    .bold()
+                Spacer()
+                Divider()
                 
-                Text("Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")")
-                    .foregroundColor(.secondary)
-                
-                Text("© 2024 NotchDrop Developer")
-                    .foregroundColor(.secondary)
-                
-                Button("Visit Website") {
-                    openWebsite()
+                // About section at the bottom
+                List(selection: $selectedSidebarItem) {
+                    NavigationLink(value: SidebarItem.about) {
+                        Label(SidebarItem.about.rawValue.localizedCapitalized,
+                              systemImage: SidebarItem.about.iconName)
+                    }
                 }
-                .buttonStyle(.borderedProminent)
+                .listStyle(SidebarListStyle())
+                .frame(height: 50) // Adjust this height as needed
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .tabItem {
-                Label("About", systemImage: "info.circle")
+            .toolbar(.hidden, for: .automatic)
+        } detail: {
+            switch selectedSidebarItem {
+            case .general:
+                GeneralSettingsView()
+            case .appearance:
+                AppearanceSettingsView()
+            case .behavior:
+                BehaviorSettingsView()
+            case .about:
+                AboutView()
             }
-            .tag(3)
         }
-        .padding()
-        .frame(width: 500, height: 400)
-    }
-    
-    private func restartApplication() {
-        let alert = NSAlert()
-        alert.messageText = "Restart Application"
-        alert.informativeText = "Do you want to restart NotchDrop now?"
-        alert.addButton(withTitle: "Restart")
-        alert.addButton(withTitle: "Cancel")
-        
-        if alert.runModal() == .alertFirstButtonReturn {
-            let bundleID = Bundle.main.bundleIdentifier!
-            
-            let task = Process()
-            task.launchPath = "/usr/bin/open"
-            task.arguments = ["-b", bundleID, "-n"]
-            
-            try? task.run()
-            NSApp.terminate(nil)
-        }
-    }
-    
-    private func openWebsite() {
-        if let url = URL(string: "https://example.com") {
-            NSWorkspace.shared.open(url)
-        }
+        .frame(width: 800, height: 600)
     }
 }

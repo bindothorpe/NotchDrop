@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "& Press Option to delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -42,9 +45,6 @@
         }
       }
     },
-    "%.1fs" : {
-
-    },
     "%@ %.0fx%.0f" : {
       "localizations" : {
         "en" : {
@@ -56,9 +56,6 @@
       }
     },
     "%lldpx" : {
-
-    },
-    "%llds" : {
 
     },
     "© 2024 NotchDrop Developer" : {
@@ -389,12 +386,6 @@
         }
       }
     },
-    "About" : {
-
-    },
-    "Accent Color" : {
-
-    },
     "AirDrop" : {
       "localizations" : {
         "de" : {
@@ -515,16 +506,10 @@
         }
       }
     },
-    "Appearance" : {
+    "Appearance Settings" : {
 
     },
-    "Automatically close after inactivity" : {
-
-    },
-    "Automatically open on hover" : {
-
-    },
-    "Behavior" : {
+    "Behavior Settings" : {
 
     },
     "Clear" : {
@@ -567,9 +552,6 @@
         }
       }
     },
-    "Close after:" : {
-
-    },
     "Custom" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -610,9 +592,6 @@
           }
         }
       }
-    },
-    "Dark" : {
-
     },
     "Days" : {
       "localizations" : {
@@ -1059,7 +1038,7 @@
         }
       }
     },
-    "General" : {
+    "General Settings" : {
 
     },
     "German" : {
@@ -1224,12 +1203,6 @@
         }
       }
     },
-    "Hover delay:" : {
-
-    },
-    "Icon Size:" : {
-
-    },
     "Japanese" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1393,9 +1366,6 @@
         }
       }
     },
-    "Light" : {
-
-    },
     "Love Drop" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1436,6 +1406,9 @@
           }
         }
       }
+    },
+    "Menu Bar" : {
+
     },
     "Months" : {
       "extractionState" : "manual",
@@ -1518,6 +1491,9 @@
           }
         }
       }
+    },
+    "Notch" : {
+
     },
     "Notch Drop" : {
       "localizations" : {
@@ -1645,6 +1621,9 @@
         }
       }
     },
+    "Open on hover" : {
+
+    },
     "Press Option to delete" : {
       "localizations" : {
         "de" : {
@@ -1684,9 +1663,6 @@
           }
         }
       }
-    },
-    "Restart Application" : {
-
     },
     "Settings" : {
       "localizations" : {
@@ -1772,9 +1748,6 @@
         }
       }
     },
-    "System" : {
-
-    },
     "The language has been changed. The app will restart for the changes to take effect." : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1815,9 +1788,6 @@
           }
         }
       }
-    },
-    "Theme" : {
-
     },
     "three days" : {
       "localizations" : {
@@ -1939,6 +1909,9 @@
           }
         }
       }
+    },
+    "Translucent notch background" : {
+
     },
     "two days" : {
       "localizations" : {
