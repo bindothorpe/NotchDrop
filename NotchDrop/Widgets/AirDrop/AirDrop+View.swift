@@ -14,6 +14,7 @@ import UniformTypeIdentifiers
 // Widget
 struct AirDropView: View, NotchSizeProvider {
     @StateObject var vm: NotchViewModel
+    @StateObject private var settings = SettingsManager.shared
 
     @State var trigger: UUID = .init()
     @State var targeting = false
@@ -48,7 +49,7 @@ struct AirDropView: View, NotchSizeProvider {
             transitionSpeed: .constant(25)
         )
         .opacity(0.5)
-        .clipShape(RoundedRectangle(cornerRadius: vm.cornerRadius))
+        .clipShape(RoundedRectangle(cornerRadius: settings.appearance.widget.radius.large))
         .overlay { dropLabel }
         .aspectRatio(1, contentMode: .fit)
         .contentShape(Rectangle())

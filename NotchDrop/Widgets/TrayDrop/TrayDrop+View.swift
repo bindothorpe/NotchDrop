@@ -10,6 +10,7 @@ import SwiftUI
 struct TrayView: View, NotchSizeProvider {
     @StateObject var vm: NotchViewModel
     @StateObject var tvm = TrayDrop.shared
+    @StateObject private var settings = SettingsManager.shared
 
     @State private var targeting = false
 
@@ -45,7 +46,7 @@ struct TrayView: View, NotchSizeProvider {
     }
 
     var panel: some View {
-        RoundedRectangle(cornerRadius: vm.cornerRadius)
+        RoundedRectangle(cornerRadius: settings.appearance.widget.radius.large)
             .strokeBorder(style: StrokeStyle(lineWidth: 4, dash: [10]))
             .foregroundStyle(.white.opacity(0.1))
             .background(loading)
@@ -58,7 +59,7 @@ struct TrayView: View, NotchSizeProvider {
     }
 
     var loading: some View {
-        RoundedRectangle(cornerRadius: vm.cornerRadius)
+        RoundedRectangle(cornerRadius: settings.appearance.widget.radius.large)
             .foregroundStyle(.white.opacity(0.1))
             .conditionalEffect(
                 .repeat(

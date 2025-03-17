@@ -11,6 +11,7 @@ import SwiftUI
 // Notch View
 struct NotchView: View {
     @StateObject var vm: NotchViewModel
+    @StateObject private var settings = SettingsManager.shared
 
     @State var dropTargeting: Bool = false
 
@@ -18,8 +19,8 @@ struct NotchView: View {
         switch vm.status {
         case .closed:
             var ans = CGSize(
-                width: vm.deviceNotchRect.width - 4,
-                height: vm.deviceNotchRect.height - 4
+                width: vm.deviceNotchRect.width - 4 + settings.appearance.notch.sizeAdjustment.width,
+                height: vm.deviceNotchRect.height - 4 + settings.appearance.notch.sizeAdjustment.height
             )
             if ans.width < 0 { ans.width = 0 }
             if ans.height < 0 { ans.height = 0 }
@@ -36,10 +37,22 @@ struct NotchView: View {
 
     var notchCornerRadius: CGFloat {
         switch vm.status {
-        case .closed: 8
-        case .opened: 32
-        case .popping: 10
+        case .closed: settings.appearance.notch.cornerRadius.closed.main
+        case .opened: settings.appearance.notch.cornerRadius.opened.main
+        case .popping: settings.appearance.notch.cornerRadius.popping.main
         }
+    }
+    
+    var notchWingCornerRadius: CGFloat {
+        switch vm.status {
+        case .closed: settings.appearance.notch.cornerRadius.closed.wing
+        case .opened: settings.appearance.notch.cornerRadius.opened.wing
+        case .popping: settings.appearance.notch.cornerRadius.popping.wing
+        }
+    }
+    
+    var notchOpacity: CGFloat {
+        return settings.appearance.notch.isTranslucent ? settings.appearance.notch.translucentOpacity : 1
     }
 
     var body: some View {
@@ -47,7 +60,7 @@ struct NotchView: View {
             notch
                 .zIndex(0)
                 .disabled(true)
-                .opacity(vm.notchVisible ? 1 : 0.3)
+                .opacity(vm.notchVisible ? 1 : notchOpacity)
             Group {
                 if vm.status == .opened {
                     VStack(spacing: vm.spacing) {
@@ -80,7 +93,7 @@ struct NotchView: View {
             .foregroundStyle(.black)
             .mask(notchBackgroundMaskGroup)
             .frame(
-                width: notchSize.width + notchCornerRadius * 2,
+                width: notchSize.width + notchWingCornerRadius * 2,
                 height: notchSize.height
             )
             .shadow(
@@ -103,38 +116,38 @@ struct NotchView: View {
             .overlay {
                 ZStack(alignment: .topTrailing) {
                     Rectangle()
-                        .frame(width: notchCornerRadius, height: notchCornerRadius)
+                        .frame(width: notchWingCornerRadius, height: notchWingCornerRadius)
                         .foregroundStyle(.black)
                     Rectangle()
-                        .clipShape(.rect(topTrailingRadius: notchCornerRadius))
+                        .clipShape(.rect(topTrailingRadius: notchWingCornerRadius))
                         .foregroundStyle(.white)
                         .frame(
-                            width: notchCornerRadius + vm.spacing,
-                            height: notchCornerRadius + vm.spacing
+                            width: notchWingCornerRadius + vm.spacing,
+                            height: notchWingCornerRadius + vm.spacing
                         )
                         .blendMode(.destinationOut)
                 }
                 .compositingGroup()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                .offset(x: -notchCornerRadius - vm.spacing + 0.5, y: -0.5)
+                .offset(x: -notchWingCornerRadius - vm.spacing + 0.5, y: -0.5)
             }
             .overlay {
                 ZStack(alignment: .topLeading) {
                     Rectangle()
-                        .frame(width: notchCornerRadius, height: notchCornerRadius)
+                        .frame(width: notchWingCornerRadius, height: notchWingCornerRadius)
                         .foregroundStyle(.black)
                     Rectangle()
-                        .clipShape(.rect(topLeadingRadius: notchCornerRadius))
+                        .clipShape(.rect(topLeadingRadius: notchWingCornerRadius))
                         .foregroundStyle(.white)
                         .frame(
-                            width: notchCornerRadius + vm.spacing,
-                            height: notchCornerRadius + vm.spacing
+                            width: notchWingCornerRadius + vm.spacing,
+                            height: notchWingCornerRadius + vm.spacing
                         )
                         .blendMode(.destinationOut)
                 }
                 .compositingGroup()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                .offset(x: notchCornerRadius + vm.spacing - 0.5, y: -0.5)
+                .offset(x: notchWingCornerRadius + vm.spacing - 0.5, y: -0.5)
             }
     }
 

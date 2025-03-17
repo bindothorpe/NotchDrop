@@ -2040,6 +2040,9 @@
         }
       }
     },
+    "Widget" : {
+
+    },
     "Years" : {
       "extractionState" : "manual",
       "localizations" : {
