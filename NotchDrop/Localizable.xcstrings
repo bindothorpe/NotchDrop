@@ -55,6 +55,9 @@
         }
       }
     },
+    "%lld widgets" : {
+
+    },
     "%lldpx" : {
 
     },
@@ -386,6 +389,12 @@
         }
       }
     },
+    "Add Tab" : {
+
+    },
+    "Add Widget" : {
+
+    },
     "AirDrop" : {
       "localizations" : {
         "de" : {
@@ -509,7 +518,13 @@
     "Appearance Settings" : {
 
     },
+    "Basic Information" : {
+
+    },
     "Behavior Settings" : {
+
+    },
+    "Cancel" : {
 
     },
     "Clear" : {
@@ -552,6 +567,9 @@
         }
       }
     },
+    "Columns: %lld" : {
+
+    },
     "Custom" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -592,6 +610,12 @@
           }
         }
       }
+    },
+    "Custom Icon Name" : {
+
+    },
+    "Custom:" : {
+
     },
     "Days" : {
       "localizations" : {
@@ -713,6 +737,9 @@
           }
         }
       }
+    },
+    "Edit" : {
+
     },
     "English" : {
       "extractionState" : "manual",
@@ -1122,6 +1149,9 @@
         }
       }
     },
+    "Grid Size" : {
+
+    },
     "Haptic Feedback " : {
       "localizations" : {
         "de" : {
@@ -1161,6 +1191,9 @@
           }
         }
       }
+    },
+    "Height: %lld" : {
+
     },
     "Hours" : {
       "extractionState" : "manual",
@@ -1202,6 +1235,12 @@
           }
         }
       }
+    },
+    "Icon" : {
+
+    },
+    "Icon:" : {
+
     },
     "Japanese" : {
       "extractionState" : "manual",
@@ -1624,6 +1663,9 @@
     "Open on hover" : {
 
     },
+    "Position & Size" : {
+
+    },
     "Press Option to delete" : {
       "localizations" : {
         "de" : {
@@ -1663,6 +1705,15 @@
           }
         }
       }
+    },
+    "Remove" : {
+
+    },
+    "Rows: %lld" : {
+
+    },
+    "Save" : {
+
     },
     "Settings" : {
       "localizations" : {
@@ -1747,6 +1798,15 @@
           }
         }
       }
+    },
+    "Tab Properties" : {
+
+    },
+    "Tab Title" : {
+
+    },
+    "Tabs" : {
+
     },
     "The language has been changed. The app will restart for the changes to take effect." : {
       "extractionState" : "manual",
@@ -1953,6 +2013,9 @@
         }
       }
     },
+    "Type" : {
+
+    },
     "Version %@" : {
 
     },
@@ -2041,6 +2104,24 @@
       }
     },
     "Widget" : {
+
+    },
+    "Widget Properties" : {
+
+    },
+    "Widget Type" : {
+
+    },
+    "Widgets" : {
+
+    },
+    "Width: %lld" : {
+
+    },
+    "X Position: %lld" : {
+
+    },
+    "Y Position: %lld" : {
 
     },
     "Years" : {

@@ -3,10 +3,8 @@
 //  NotchDrop
 //
 //  Created by Bindo Thorpe on 11/03/2025.
+//  Updated by Claude on 22/03/2025.
 //
-
-import SwiftUI
-import SwiftUI
 
 import SwiftUI
 
@@ -16,6 +14,7 @@ enum SidebarItem: String, Identifiable, CaseIterable {
     case general
     case appearance
     case behavior
+    case tabs
     case about
     
     // Add a property to get the appropriate system image name for each item
@@ -27,6 +26,8 @@ enum SidebarItem: String, Identifiable, CaseIterable {
             return "paintbrush"
         case .behavior:
             return "hand.tap"
+        case .tabs:
+            return "rectangle.grid.2x2"
         case .about:
             return "info.circle"
         }
@@ -36,6 +37,19 @@ enum SidebarItem: String, Identifiable, CaseIterable {
 struct SettingsView: View {
     private let sidebarVisibility: NavigationSplitViewVisibility = .all
     @State var selectedSidebarItem: SidebarItem = .general
+    @ObservedObject var notchViewModel: NotchViewModel
+    
+    init() {
+        // Get reference to the NotchViewModel from the AppDelegate
+        if let appDelegate = NSApp.delegate as? AppDelegate,
+           let windowController = appDelegate.mainWindowController,
+           let vm = windowController.vm {
+            self.notchViewModel = vm
+        } else {
+            // Fallback to a new instance if not available
+            self.notchViewModel = NotchViewModel()
+        }
+    }
     
     var body: some View {
         NavigationSplitView(columnVisibility: .constant(.all)) {
@@ -71,10 +85,23 @@ struct SettingsView: View {
                 AppearanceSettingsView()
             case .behavior:
                 BehaviorSettingsView()
+            case .tabs:
+                TabManagerView(vm: notchViewModel)
             case .about:
                 AboutView()
             }
         }
         .frame(width: 800, height: 600)
+    }
+}
+
+struct AppDelegateKey: EnvironmentKey {
+    static let defaultValue: AppDelegate? = nil
+}
+
+extension EnvironmentValues {
+    var appDelegate: AppDelegate? {
+        get { self[AppDelegateKey.self] }
+        set { self[AppDelegateKey.self] = newValue }
     }
 }
