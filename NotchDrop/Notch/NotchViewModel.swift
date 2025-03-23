@@ -331,7 +331,7 @@ class NotchViewModel: NSObject, ObservableObject {
         let size = tab.calculateDimensions(cellSize: cellSize, spacing: spacing)
         
         // Ensure minimum width and height
-        let minWidth = max(deviceNotchRect.width, 120)
+        let minWidth = max(deviceNotchRect.width * 2, 120)
         let minHeight = max(deviceNotchRect.height * 2, 120)
         
         // Apply size limits

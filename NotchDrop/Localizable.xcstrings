@@ -518,9 +518,6 @@
     "Appearance Settings" : {
 
     },
-    "Basic Information" : {
-
-    },
     "Behavior Settings" : {
 
     },
@@ -610,12 +607,6 @@
           }
         }
       }
-    },
-    "Custom Icon Name" : {
-
-    },
-    "Custom:" : {
-
     },
     "Days" : {
       "localizations" : {
@@ -1149,9 +1140,6 @@
         }
       }
     },
-    "Grid Size" : {
-
-    },
     "Haptic Feedback " : {
       "localizations" : {
         "de" : {
@@ -1235,12 +1223,6 @@
           }
         }
       }
-    },
-    "Icon" : {
-
-    },
-    "Icon:" : {
-
     },
     "Japanese" : {
       "extractionState" : "manual",
@@ -1802,7 +1784,7 @@
     "Tab Properties" : {
 
     },
-    "Tab Title" : {
+    "Tab Settings" : {
 
     },
     "Tabs" : {
